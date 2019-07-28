@@ -75,7 +75,9 @@ def image_selected(event):
         else:
             new_width = int(imageFile.width * (100/imageFile.height))
             imageFile = imageFile.resize((new_width, 100))
-
+        # 上下反転にチェックしていた場合は回転
+        if True == need_rotate.get():
+            imageFile = imageFile.rotate(180)
         # 画像貼り付け
         selected_image = ImageTk.PhotoImage(imageFile)
         canvas_view.create_image(75, 50, image=selected_image)
